@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Demo do Conselho</title>
+<!-- Só para ver o painel no navegador (fora do jogo). Não vai no fxmanifest.
+     Uso: _demo.html?aba=missoes  (conselho, missoes, terras, dons, cesto, povo; dominacao abre a escolha de terra) -->
+<style>html,body{margin:0;height:100%;background:#000}iframe{border:0;width:100%;height:100%}</style>
+</head>
+<body>
+<iframe id="f" src="index.html"></iframe>
+<script>
+const f = document.getElementById('f');
+f.addEventListener('load', function () {
+    const w = f.contentWindow;
+    w.GetParentResourceName = function () { return 'pantanal_nativos'; };
+    w.fetch = function () { return Promise.resolve({ json: function () { return {}; } }); };
+    const agora = Date.now();
+    w.postMessage({ type: 'showUI', config: {
+        valorRoxo: 2,
+        buffs: {
+            pickpocket: { name: 'Tributo da Mata', description: 'Quem atravessa as terras da tribo paga tributo: a mão leve da mata tira da bolsa dele. Quanto maior o nível, maior a chance e o valor.', maxLevel: 6, costs: { 1: { money: 20, duration: 1 }, 2: { money: 180, duration: 2 }, 3: { money: 540, duration: 3 }, 4: { money: 1320, duration: 4 }, 5: { money: 3780, duration: 6 } }, requirements: { minLevel: 1 } },
+            npc_allies: { name: 'Guerreiros da Tribo', description: 'Guerreiros com arco acompanham os da tribo nas terras dominadas e atacam quem os ferir.', maxLevel: 1, costs: { 1: { money: 1000, duration: 1 } }, requirements: { minLevel: 5 } },
+            territory: { name: 'Olhos dos Batedores', description: 'Os batedores contam onde ficam todos os pontos sagrados: os da tribo, os dos rivais e os livres.', maxLevel: 1, costs: { 1: { money: 1000, duration: 1 } }, requirements: { minLevel: 5 } },
+            resistance: { name: 'Força dos Ancestrais', description: 'Os ancestrais dão fôlego e couro grosso a todos da tribo nas terras dominadas.', maxLevel: 1, costs: { 1: { money: 2000, duration: 1 } }, requirements: { minLevel: 10 } },
+        },
+        wampumRecompensas: { daily_1: { branco: 1, roxo: 0 }, daily_2: { branco: 1, roxo: 0 }, daily_3: { branco: 2, roxo: 0 }, special_1: { branco: 1, roxo: 2 }, special_2: { branco: 1, roxo: 1 }, special_3: { branco: 2, roxo: 0 } },
+        cooldowns: { daily_1: { minutes: 180 }, daily_2: { minutes: 180 }, daily_3: { minutes: 180 }, special_1: { minutes: 180 }, special_2: { minutes: 180 }, special_3: { minutes: 180 } },
+        tribos: { Padrao: { titulo: 'Confederação Kohani', lore: 'O interior do Pantanal nunca pertenceu aos impérios.' },
+                  Lobo: { titulo: 'Clã do Lobo', lore: 'Caçam juntos e não deixam ninguém para trás. Onde o Lobo acende a fogueira, a estrada fecha.' } },
+    }, gangData: {
+        name: 'Lobo', level: 6, xp: 2400, xpProximo: 6000, rank: 'leader', money: 1250,
+        wampum: { branco: 3, roxo: 2, valor: 7, valorRoxo: 2 },
+        territories: { 'Vale Wapiti': 60, 'Rio Kamassa': 0, 'Serra Grizzly': 100 },
+        allowedLocations: [{ area: 'Vale Wapiti' }, { area: 'Vale Wapiti' }, { area: 'Vale Wapiti' }, { area: 'Vale Wapiti' }, { area: 'Vale Wapiti' }, { area: 'Rio Kamassa' }, { area: 'Rio Kamassa' }, { area: 'Serra Grizzly' }, { area: 'Serra Grizzly' }],
+        buffs: [{ id: 'pickpocket', level: 2, expiration: agora + 5400000 }],
+        members: [
+            { identifier: 'a', charid: 1, rank: 'leader', name: 'Tukwa Raposa', online: true, fonte: 3 },
+            { identifier: 'b', charid: 2, rank: 'member', name: 'Ayasha Corre-Rio', online: true, fonte: 7 },
+            { identifier: 'c', charid: 3, rank: 'member', name: 'Nahele Pena', online: false },
+        ],
+        missions: [
+            { id: 'daily_1', title: 'Bois', description: 'Leve o gado dos colonos para a aldeia.', reward: '$ e XP', completed: false },
+            { id: 'daily_2', title: 'Postes', description: 'Derrube os postes do telégrafo que cortam a terra.', reward: '$ e XP', completed: true, inCooldown: true, cooldownRemaining: 95, cooldownSkipCost: 2 },
+            { id: 'daily_3', title: 'Carroça', description: 'Tome a carroça na estrada.', reward: '$ e XP', completed: false },
+            { id: 'special_1', title: 'Dominação', description: 'Tome uma terra rival.', reward: 'Wampum e XP', isSpecial: true, completed: false, minMembers: 2 },
+            { id: 'special_2', title: 'Piratas', description: 'Afunde os barcos no rio.', reward: '$', isSpecial: true, completed: true, inCooldown: true, cooldownRemaining: 30, cooldownSkipCost: 4 },
+            { id: 'special_3', title: 'Extorsão', description: 'Cobre o tributo da cidade.', reward: '$', isSpecial: true, completed: false },
+        ],
+    } }, '*');
+    w.postMessage({ type: 'updateStorage', items: [{ name: 'water', label: 'Água', count: 6, image: 'images/items/water.png' }, { name: 'pena', label: 'Pena de Águia', count: 3 }] }, '*');
+    w.postMessage({ type: 'updatePlayerInventory', items: [{ name: 'water', label: 'Água', count: 2, image: 'images/items/water.png' }] }, '*');
+    w.postMessage({ type: 'updateViveiro', viveiro: {
+        existe: true, perto: true, chefe: true, max: 8, capturasHoje: 1, capturasMax: 3, ovosSemana: 1, ovosMax: 4,
+        aves: [
+            { id: 1, especie: 'aguia', nome: 'Águia', sexo: 'F', estado: 'manso', mansidao: 100, minha: true, comerEm: 0, prontoEm: 0, descansoEm: 0, temComida: true, podeTirar: true },
+            { id: 2, especie: 'aguia', nome: 'Águia', sexo: 'M', estado: 'selvagem', mansidao: 40, minha: true, comerEm: 5400, prontoEm: 0, descansoEm: 0, temComida: true, podeTirar: false },
+            { id: 3, especie: 'garca', nome: 'Garça', sexo: 'M', estado: 'filhote', mansidao: 60, minha: false, comerEm: 0, prontoEm: 0, descansoEm: 0, temComida: false, podeTirar: false },
+            { id: 4, especie: 'gaviao', nome: 'Gavião', sexo: 'F', estado: 'ovo', mansidao: 0, minha: true, comerEm: 0, prontoEm: 25200, descansoEm: 0, temComida: false, podeTirar: false },
+        ],
+        noBolso: [{ itemId: 91, aveId: 12, nome: 'Corvo', apelido: 'Sombra', grau: 3, sexo: 'M' }],
+    } }, '*');
+    const aba = new URLSearchParams(location.search).get('aba');
+    if (aba === 'dominacao') {
+        w.postMessage({ type: 'showTerritorySelector', territories: [{ name: 'Pântano 1', canAttack: true, owner: 'Urso' }, { name: 'Pântano 2', canAttack: true, owner: 'none' }, { name: 'Pântano 3', canAttack: false, owner: 'Lobo' }] }, '*');
+    } else if (aba) {
+        setTimeout(function () { const b = w.document.querySelector('.abas button[data-aba="' + aba + '"]'); if (b) b.click(); }, 50);
+    }
+});
+</script>
+</body>
+</html>

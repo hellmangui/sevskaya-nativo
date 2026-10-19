@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Emblema da Tribo: cinto de wampum (contas brancas e roxas) em volta da fogueira -->
+  <defs>
+    <radialGradient id="brasa" cx="50%" cy="70%" r="60%">
+      <stop offset="0" stop-color="#ffd27a"/>
+      <stop offset=".55" stop-color="#e0782b"/>
+      <stop offset="1" stop-color="#8a2b12"/>
+    </radialGradient>
+    <radialGradient id="fundo" cx="50%" cy="45%" r="60%">
+      <stop offset="0" stop-color="#1b1714"/>
+      <stop offset="1" stop-color="#07090a"/>
+    </radialGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#fundo)" stroke="#d8b878" stroke-opacity=".75" stroke-width="1.5"/>
+  <!-- 24 contas: a cada 3, uma roxa -->
+  <g fill="#ece3cf" stroke="#3a2d22" stroke-width=".6">
+    <ellipse cx="60" cy="10" rx="3.4" ry="2.4"/>
+    <ellipse cx="72.9" cy="11.7" rx="3.4" ry="2.4" transform="rotate(15 72.9 11.7)"/>
+    <ellipse cx="95.4" cy="24.6" rx="3.4" ry="2.4" transform="rotate(45 95.4 24.6)"/>
+    <ellipse cx="103.3" cy="35" rx="3.4" ry="2.4" transform="rotate(60 103.3 35)"/>
+    <ellipse cx="110" cy="60" rx="3.4" ry="2.4" transform="rotate(90 110 60)"/>
+    <ellipse cx="108.3" cy="72.9" rx="3.4" ry="2.4" transform="rotate(105 108.3 72.9)"/>
+    <ellipse cx="95.4" cy="95.4" rx="3.4" ry="2.4" transform="rotate(135 95.4 95.4)"/>
+    <ellipse cx="85" cy="103.3" rx="3.4" ry="2.4" transform="rotate(150 85 103.3)"/>
+    <ellipse cx="60" cy="110" rx="3.4" ry="2.4" transform="rotate(180 60 110)"/>
+    <ellipse cx="47.1" cy="108.3" rx="3.4" ry="2.4" transform="rotate(195 47.1 108.3)"/>
+    <ellipse cx="24.6" cy="95.4" rx="3.4" ry="2.4" transform="rotate(225 24.6 95.4)"/>
+    <ellipse cx="16.7" cy="85" rx="3.4" ry="2.4" transform="rotate(240 16.7 85)"/>
+    <ellipse cx="10" cy="60" rx="3.4" ry="2.4" transform="rotate(270 10 60)"/>
+    <ellipse cx="11.7" cy="47.1" rx="3.4" ry="2.4" transform="rotate(285 11.7 47.1)"/>
+    <ellipse cx="24.6" cy="24.6" rx="3.4" ry="2.4" transform="rotate(315 24.6 24.6)"/>
+    <ellipse cx="35" cy="16.7" rx="3.4" ry="2.4" transform="rotate(330 35 16.7)"/>
+  </g>
+  <g fill="#7b3f8c" stroke="#2a1430" stroke-width=".6">
+    <ellipse cx="85" cy="16.7" rx="3.4" ry="2.4" transform="rotate(30 85 16.7)"/>
+    <ellipse cx="108.3" cy="47.1" rx="3.4" ry="2.4" transform="rotate(75 108.3 47.1)"/>
+    <ellipse cx="103.3" cy="85" rx="3.4" ry="2.4" transform="rotate(120 103.3 85)"/>
+    <ellipse cx="72.9" cy="108.3" rx="3.4" ry="2.4" transform="rotate(165 72.9 108.3)"/>
+    <ellipse cx="35" cy="103.3" rx="3.4" ry="2.4" transform="rotate(210 35 103.3)"/>
+    <ellipse cx="11.7" cy="72.9" rx="3.4" ry="2.4" transform="rotate(255 11.7 72.9)"/>
+    <ellipse cx="16.7" cy="35" rx="3.4" ry="2.4" transform="rotate(300 16.7 35)"/>
+    <ellipse cx="47.1" cy="11.7" rx="3.4" ry="2.4" transform="rotate(345 47.1 11.7)"/>
+  </g>
+  <circle cx="60" cy="60" r="42" fill="none" stroke="#d8b878" stroke-opacity=".35" stroke-width="1"/>
+  <!-- fogueira -->
+  <path d="M60 30 C66 42 76 48 72 62 C70 70 64 74 60 74 C54 74 47 70 46 62 C44 52 52 48 54 40 C56 46 58 48 60 48 C58 42 58 36 60 30 Z" fill="url(#brasa)"/>
+  <path d="M60 52 C63 58 66 62 64 67 C63 70 61 71 60 71 C57 71 55 69 55 66 C55 62 58 60 60 52 Z" fill="#ffe7a8" fill-opacity=".85"/>
+  <!-- lenha cruzada -->
+  <g stroke="#6b4a2e" stroke-width="5" stroke-linecap="round">
+    <line x1="40" y1="86" x2="80" y2="74"/>
+    <line x1="40" y1="74" x2="80" y2="86"/>
+  </g>
+  <g stroke="#d8b878" stroke-opacity=".5" stroke-width="1" stroke-linecap="round">
+    <line x1="40" y1="86" x2="80" y2="74"/>
+    <line x1="40" y1="74" x2="80" y2="86"/>
+  </g>
+</svg>

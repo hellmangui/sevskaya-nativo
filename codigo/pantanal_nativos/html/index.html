@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Conselho da Tribo</title>
+    <link rel="stylesheet" href="tribo.css">
+</head>
+<body>
+    <!-- Conselho da Tribo: palco fixo de 1920x1080, escalado para a tela (mesma tela do grimório do Sobrenatural) -->
+    <div id="grimorio" class="escondido">
+        <div class="palco" id="palco">
+            <div class="fundo" id="gFundo"></div>
+            <div class="veu-fundo"></div>
+
+            <!-- topo -->
+            <header class="topo">
+                <div class="marca">K<i class="marca-fogo"></i>HANI<span class="marca-orn">✦</span></div>
+                <nav class="abas">
+                    <button data-aba="conselho">Conselho</button>
+                    <button data-aba="missoes">Missões</button>
+                    <button data-aba="terras">Terras</button>
+                    <button data-aba="dons">Dons</button>
+                    <button data-aba="cesto">Cesto</button>
+                    <button data-aba="viveiro">Viveiro</button>
+                    <button data-aba="povo">Povo</button>
+                </nav>
+            </header>
+
+            <!-- ficha (sobre o retrato) -->
+            <aside class="ficha">
+                <h1 id="gNome"></h1>
+                <div class="ficha-titulo" id="gTitulo"></div>
+                <div class="ficha-nivel"><span>Nível</span> <b id="gNivel"></b></div>
+                <div class="ficha-pontos"><b id="gCargo"></b></div>
+                <div class="ficha-xp"><div class="ficha-xp-cheio" id="gXpBarra"></div></div>
+                <div class="ficha-xp-texto" id="gXp"></div>
+            </aside>
+            <aside class="atributos">
+                <h4>Tesouro</h4>
+                <div class="atrib"><i><span class="conta branca"></span></i><span>Wampum branco</span><b id="gBranco">0</b></div>
+                <div class="atrib"><i><span class="conta roxa"></span></i><span>Wampum roxo</span><b id="gRoxo">0</b></div>
+                <div class="atrib"><i data-simbolo="moeda"></i><span>Bolsa da tribo</span><b id="gBolsa">$0</b></div>
+                <div class="atrib"><i data-simbolo="terra"></i><span>Terras</span><b id="gTerras">0%</b></div>
+                <div class="atrib"><i data-simbolo="pessoa"></i><span>Povo</span><b id="gPovo">0</b></div>
+            </aside>
+
+            <!-- centro -->
+            <main class="conteudo">
+                <!-- CONSELHO -->
+                <section data-pagina="conselho">
+                    <div class="ascensao">
+                        <div class="emblema" id="cEmblema"></div>
+                        <h2 id="cNome"></h2>
+                        <div class="sub" id="cTitulo"></div>
+                        <div class="filete"></div>
+                        <p class="lore" id="cLore"></p>
+                        <div class="fontes">
+                            <div><i data-simbolo="terra"></i><b id="cTerras">0%</b><span>Terras</span></div>
+                            <div><i data-simbolo="pessoa"></i><b id="cPovo">0</b><span>Povo</span></div>
+                            <div><i data-simbolo="fogo"></i><b id="cDons">0</b><span>Dons ativos</span></div>
+                            <div><i data-simbolo="trilha"></i><b id="cMissoes">0</b><span>Missões livres</span></div>
+                        </div>
+                        <div class="nivel-grande"><span>Nível</span><b id="cNivel"></b></div>
+                        <div class="xp-grande"><div class="xp-grande-cheio" id="cXpBarra"></div></div>
+                        <div class="xp-grande-texto" id="cXp"></div>
+                    </div>
+                </section>
+
+                <!-- MISSÕES -->
+                <section data-pagina="missoes">
+                    <div class="livro">
+                        <h3 id="mTituloLista">Trilhas do Dia</h3>
+                        <div class="sub" id="mSubLista">Escolha a trilha · a espera de cada uma vale para a tribo inteira</div>
+                        <div class="rolagem" id="mLista"></div>
+                    </div>
+                </section>
+
+                <!-- TERRAS -->
+                <section data-pagina="terras">
+                    <div class="livro">
+                        <h3>Pontos Sagrados</h3>
+                        <div class="sub" id="tSub">Acenda a fogueira ritual para tomar a terra</div>
+                        <div class="rolagem" id="tLista"></div>
+                    </div>
+                </section>
+
+                <!-- DONS -->
+                <section data-pagina="dons">
+                    <div class="livro">
+                        <h3>Dons da Tribo</h3>
+                        <div class="sub">Oferendas que o chefe acende para todos · duram algumas horas</div>
+                        <div class="rolagem" id="dLista"></div>
+                    </div>
+                </section>
+
+                <!-- CESTO -->
+                <section data-pagina="cesto">
+                    <div class="livro">
+                        <h3>Cesto da Tribo</h3>
+                        <div class="sub">Escolha um item do cesto para retirar, ou da sua bolsa para guardar</div>
+                        <div class="rolagem">
+                            <div class="grupo-titulo">No cesto</div>
+                            <div class="espacos" id="eCesto"></div>
+                            <div class="grupo-titulo">Na sua bolsa</div>
+                            <div class="espacos" id="eBolsa"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VIVEIRO (falcoaria) -->
+                <section data-pagina="viveiro">
+                    <div class="livro">
+                        <h3>Viveiro da Tribo</h3>
+                        <div class="sub" id="vSub"></div>
+                        <div class="rolagem" id="vLista"></div>
+                    </div>
+                </section>
+
+                <!-- POVO -->
+                <section data-pagina="povo">
+                    <div class="livro">
+                        <h3>Povo da Tribo</h3>
+                        <div class="sub" id="pSubLista"></div>
+                        <div class="rolagem"><div class="lista" id="pLista"></div></div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- painel da direita -->
+            <aside class="painel">
+                <div class="painel-rotulo"><i class="losango-mini"></i><span id="pRotulo"></span></div>
+                <h2 id="pNome"></h2>
+                <div class="painel-ilustracao" id="pIlustracao"></div>
+                <p id="pDescricao"></p>
+                <div class="painel-numeros" id="pNumeros"></div>
+                <div class="painel-campo" id="pCampo"><label id="pCampoRotulo"></label><input id="pCampoValor" type="number" min="1" inputmode="numeric"></div>
+                <div class="botoes">
+                    <button class="botao-ouro secundario" id="pBotao2" hidden><span></span></button>
+                    <button class="botao-ouro" id="pBotao"><i class="botao-fogo"></i><span></span></button>
+                </div>
+                <div class="painel-motivo" id="pMotivo"></div>
+            </aside>
+
+            <!-- rodapé -->
+            <footer class="rodape">
+                <div class="dicas">
+                    <span class="dica"><i class="tecla-g">⦿</i>Selecionar</span>
+                    <span class="dica"><i class="tecla-g">Q</i><i class="tecla-g">E</i>Abas</span>
+                </div>
+                <div class="aviso" id="gAviso" role="status"></div>
+                <div class="selos-rodape" id="rSelos"></div>
+                <div class="voltar" id="rVoltar"><i class="tecla-g larga">ESC</i>Voltar</div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="simbolos.js"></script>
+    <script src="tribo.js"></script>
+</body>
+</html>
